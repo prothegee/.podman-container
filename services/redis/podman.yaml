@@ -1,6 +1,6 @@
 services:
   redis:
-    image: docker.io/library/redis:8.4.0
+    image: registry.hub.docker.com/library/redis:8.4.0
     container_name: redis-1-cc
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD}
