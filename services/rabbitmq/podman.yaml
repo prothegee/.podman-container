@@ -1,0 +1,21 @@
+services:
+  rabbitmq-1:
+    image: registry.hub.docker.com/library/rabbitmq:4.2.2
+    container_name: rabbitmq-1
+    # environment:
+    #   FOO: ${FOO}
+    # hostname: "0.0.0.0"
+    ports:
+      - "5672:5672"
+    volumes:
+      - ./data-rabbitmq-1:/var/lib/rabbitmq
+    networks:
+      - core_podman_network
+    restart: unless-stopped
+
+# volumes:
+#   rabbitmq-data:
+
+networks:
+    core_podman_network:
+      external: true
