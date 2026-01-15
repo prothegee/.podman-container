@@ -1,0 +1,26 @@
+services:
+  scylladb-1:
+    image: registry.hub.docker.com/scylladb/scylla:2025.4
+    container_name: scylladb-1
+    # environment:
+    #   FOO: ${FOO}
+    # hostname: "0.0.0.0"
+    # ports:
+    #   - "7002:7002"
+    #   - "7003:7003"
+    #   - "7200:7200"
+    #   - "9043:9043"
+    #   - "9161:9161"
+    volumes:
+      - ./data-scylladb-1:/var/lib/scylla/data # chown -R 999:999 path/dir (999 official scylladb)
+    networks:
+      - core_podman_network
+    restart: unless-stopped
+
+# volumes:
+#   scylladb-data:
+
+networks:
+    core_podman_network:
+      external: true
+
