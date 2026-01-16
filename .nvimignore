@@ -50,6 +50,19 @@ export*.h
 export*.hh
 export*.hpp
 
+*/*/build/*
+*/*/*/*build/*
+*/*/.log/*
+*/*/*/.log/*
+*/*/.public/*
+*/*/*/.public/*
+*/*/.cache/*
+*/*/*/.cache/*
+
+*/data*/*
+*/*/data*/*
+*/*/*/data*/*
+
 ##
 ## file: exclude
 ##
