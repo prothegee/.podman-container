@@ -39,6 +39,8 @@ node_modules
 .vscode/*.json
 .zed/*.json
 
+.env
+
 CMakePresets.json
 config/config.*.json
 compile_commands.json
