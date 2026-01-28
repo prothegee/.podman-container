@@ -1,0 +1,21 @@
+services:
+  mongodb-1:
+    image: registry.hub.docker.com/library/mongo:8.2.3
+    container_name: mongodb-1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data-mongodb-1:/data/db
+    networks:
+      - core_podman_network
+    restart: unless-stopped
+
+# volumes:
+#   mongodb-data:
+
+networks:
+  core_podman_network:
+    external: true
