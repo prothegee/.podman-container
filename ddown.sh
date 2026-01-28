@@ -3,6 +3,7 @@ CURRENT_DIR=$(pwd);
 
 services_dirs=(
     "$(pwd)/services/kafka"
+    "$(pwd)/services/mongodb"
     "$(pwd)/services/postgresql"
     "$(pwd)/services/rabbitmq"
     "$(pwd)/services/redis"
