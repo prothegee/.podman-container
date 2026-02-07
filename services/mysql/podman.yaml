@@ -1,0 +1,17 @@
+services:
+  mysql-1:
+    image: registry.hub.docker.com/library/mysql:9.6.0
+    container_name: mysql-1
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data-mysql-1:/var/lib/mysql
+    networks:
+      - core_podman_network
+    restart: unless-stopped
+
+networks:
+    core_podman_network:
+      external: true
