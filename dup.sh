@@ -4,6 +4,7 @@ CURRENT_DIR=$(pwd);
 data_dirs=(
     "$(pwd)/services/kafka/data-kafka-1"
     "$(pwd)/services/kafka/data-mongodb-1"
+    "$(pwd)/services/kafka/data-mysql-1"
     "$(pwd)/services/postgresql/data-postgres-1-cr"
     "$(pwd)/services/postgresql/data-postgres-2-hw"
     "$(pwd)/services/rabbitmq/data-rabbitmq-1"
@@ -17,6 +18,7 @@ done
 services_dirs=(
     "$(pwd)/services/kafka"
     "$(pwd)/services/mongodb"
+    "$(pwd)/services/mysql"
     "$(pwd)/services/postgresql"
     "$(pwd)/services/rabbitmq"
     "$(pwd)/services/redis"
@@ -27,3 +29,5 @@ for dir in "${services_dirs[@]}"; do
     podman-compose -f ./podman.yaml up -d;
     cd ..;
 done
+
+cd $CURRENT_DIR;

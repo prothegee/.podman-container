@@ -8,10 +8,13 @@ _podman_container-start() {
     arg1_all="all";
     arg1_redis="redis";
     arg1_kafka="kafka";
+    arg1_mysql="mysql";
     arg1_mongodb="mongodb";
     arg1_rabbitmq="rabbitmq";
     arg1_scylladb="scylladb";
     arg1_postgresql="postgresql";
+
+    ORIGIN="$PWD"
 
     if [[ $arg1 == $arg1_all ]]; then
         echo "start: services $arg1_all";
@@ -35,6 +38,10 @@ _podman_container-start() {
         echo "start: service $arg1_kafka";
         cd "$cdir_service/$arg1_kafka";
         podman-compose -f ./podman.yaml start;
+    elif [[ $arg1 == $arg1_mysql ]]; then
+        echo "start: service $arg1_mysql";
+        cd "$cdir_service/$arg1_mysql";
+        podman-compose -f ./podman.yaml start;
     elif [[ $arg1 == $arg1_mongodb ]]; then
         echo "start: service $arg1_mongodb";
         cd "$cdir_service/$arg1_mongodb";
@@ -55,7 +62,7 @@ _podman_container-start() {
         echo "INFO: arg1 is not provided, skipping";
     fi
 
-    cd "$PWD";
+    cd "$ORIGIN";
 
     echo "start: $arg1 finished";
 }
@@ -66,10 +73,13 @@ _podman_container-stop() {
     arg1_all="all";
     arg1_redis="redis";
     arg1_kafka="kafka";
+    arg1_mysql="mysql";
     arg1_mongodb="mongodb";
     arg1_rabbitmq="rabbitmq";
     arg1_scylladb="scylladb";
     arg1_postgresql="postgresql";
+
+    ORIGIN="$PWD"
 
     if [[ $arg1 == $arg1_all ]]; then
         echo "stop: services $arg1_all";
@@ -93,6 +103,10 @@ _podman_container-stop() {
         echo "stop: service $arg1_kafka";
         cd "$cdir_service/$arg1_kafka";
         podman-compose -f ./podman.yaml stop;
+    elif [[ $arg1 == $arg1_mysql ]]; then
+        echo "stop: service $arg1_mysql";
+        cd "$cdir_service/$arg1_mysql";
+        podman-compose -f ./podman.yaml stop;
     elif [[ $arg1 == $arg1_mongodb ]]; then
         echo "stop: service $arg1_mongodb";
         cd "$cdir_service/$arg1_mongodb";
@@ -113,7 +127,7 @@ _podman_container-stop() {
         echo "INFO: arg1 is not provided, skipping";
     fi
 
-    cd "$PWD";
+    cd "$ORIGIN";
 
     echo "stop: $arg1 finished";
 }
@@ -124,10 +138,13 @@ _podman_container-restart() {
     arg1_all="all";
     arg1_redis="redis";
     arg1_kafka="kafka";
+    arg1_mysql="mysql";
     arg1_mongodb="mongodb";
     arg1_rabbitmq="rabbitmq";
     arg1_scylladb="scylladb";
     arg1_postgresql="postgresql";
+
+    ORIGIN="$PWD"
 
     if [[ $arg1 == $arg1_all ]]; then
         echo "restart: services $arg1_all";
@@ -151,6 +168,10 @@ _podman_container-restart() {
         echo "restart: service $arg1_kafka";
         cd "$cdir_service/$arg1_kafka";
         podman-compose -f ./podman.yaml restart;
+    elif [[ $arg1 == $arg1_mysql ]]; then
+        echo "restart: service $arg1_mysql";
+        cd "$cdir_service/$arg1_mysql";
+        podman-compose -f ./podman.yaml restart;
     elif [[ $arg1 == $arg1_mongodb ]]; then
         echo "restart: service $arg1_mongodb";
         cd "$cdir_service/$arg1_mongodb";
@@ -171,7 +192,7 @@ _podman_container-restart() {
         echo "INFO: arg1 is not provided, skipping";
     fi
 
-    cd "$PWD";
+    cd "$ORIGIN";
 
     echo "restart: $arg1 finished";
 }
