@@ -13,6 +13,7 @@ _podman_container-start() {
     arg1_rabbitmq="rabbitmq";
     arg1_scylladb="scylladb";
     arg1_postgresql="postgresql";
+    arg1_searxng="searxng";
 
     ORIGIN="$PWD"
 
@@ -58,6 +59,10 @@ _podman_container-start() {
         echo "start: service $arg1_postgresql";
         cd "$cdir_service/$arg1_postgresql";
         podman-compose -f ./podman.yaml start;
+    elif [[ $arg1 == $arg1_searxng ]]; then
+        echo "start: service $arg1_searxng";
+        cd "$cdir_service/$arg1_searxng";
+        podman-compose -f ./podman.yaml start;
     else
         echo "INFO: arg1 is not provided, skipping";
     fi
@@ -78,6 +83,7 @@ _podman_container-stop() {
     arg1_rabbitmq="rabbitmq";
     arg1_scylladb="scylladb";
     arg1_postgresql="postgresql";
+    arg1_searxng="searxng";
 
     ORIGIN="$PWD"
 
@@ -123,6 +129,10 @@ _podman_container-stop() {
         echo "stop: service $arg1_postgresql";
         cd "$cdir_service/$arg1_postgresql";
         podman-compose -f ./podman.yaml stop;
+    elif [[ $arg1 == $arg1_searxng ]]; then
+        echo "stop: service $arg1_searxng";
+        cd "$cdir_service/$arg1_searxng";
+        podman-compose -f ./podman.yaml stop;
     else
         echo "INFO: arg1 is not provided, skipping";
     fi
@@ -143,6 +153,7 @@ _podman_container-restart() {
     arg1_rabbitmq="rabbitmq";
     arg1_scylladb="scylladb";
     arg1_postgresql="postgresql";
+    arg1_searxng="searxng";
 
     ORIGIN="$PWD"
 
@@ -187,6 +198,10 @@ _podman_container-restart() {
     elif [[ $arg1 == $arg1_postgresql ]]; then
         echo "restart: service $arg1_postgresql";
         cd "$cdir_service/$arg1_postgresql";
+        podman-compose -f ./podman.yaml restart;
+    elif [[ $arg1 == $arg1_searxng ]]; then
+        echo "restart: service $arg1_searxng";
+        cd "$cdir_service/$arg1_searxng";
         podman-compose -f ./podman.yaml restart;
     else
         echo "INFO: arg1 is not provided, skipping";

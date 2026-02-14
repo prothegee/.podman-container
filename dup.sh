@@ -10,6 +10,8 @@ data_dirs=(
     "$(pwd)/services/rabbitmq/data-rabbitmq-1"
     "$(pwd)/services/redis/data-redis-1-cc"
     "$(pwd)/services/scylladb/data-scylladb-1"
+    "$(pwd)/services/searxng/data-searxng"
+    "$(pwd)/services/searxng/data-searxng-config"
 )
 for dir in "${data_dirs[@]}"; do
     mkdir -p "$dir";
@@ -23,6 +25,7 @@ services_dirs=(
     "$(pwd)/services/rabbitmq"
     "$(pwd)/services/redis"
     "$(pwd)/services/scylladb"
+    "$(pwd)/services/searxng"
 )
 for dir in "${services_dirs[@]}"; do
     cd $dir;

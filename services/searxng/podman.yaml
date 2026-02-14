@@ -1,0 +1,18 @@
+services:
+  searxng-1:
+    image: registry.hub.docker.com/searxng/searxng:latest
+    container_name: searxng-1
+    environments:
+      - SEARXNG_URL="http://localhost:12345"
+    ports:
+      - "12345:8080"
+    volumes:
+      - ./data-searxng:/var/cache/searxng
+      - ./data-searxng-config:/etc/searxng
+    networks:
+      - core_podman_network
+    restart: unless-stopped
+
+networks:
+    core_podman_network:
+      external: true

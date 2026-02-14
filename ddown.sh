@@ -9,6 +9,7 @@ services_dirs=(
     "$(pwd)/services/rabbitmq"
     "$(pwd)/services/redis"
     "$(pwd)/services/scylladb"
+    "$(pwd)/services/searxng"
 )
 for dir in "${services_dirs[@]}"; do
     cd $dir;
