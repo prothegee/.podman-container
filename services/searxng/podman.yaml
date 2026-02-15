@@ -9,6 +9,7 @@ services:
     volumes:
       - ./data-searxng:/var/cache/searxng
       - ./data-searxng-config:/etc/searxng
+      - ./settings.yml:/etc/searxng/settings.yml
     networks:
       - core_podman_network
     restart: unless-stopped
