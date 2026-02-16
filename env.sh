@@ -31,6 +31,8 @@ _podman_container-start() {
         podman-compose -f ./podman.yaml start;
         cd "$cdir_service/$arg1_postgresql";
         podman-compose -f ./podman.yaml start;
+        cd "$cdir_service/$arg1_searxng";
+        podman-compose -f ./podman.yaml start;
     elif [[ $arg1 == $arg1_redis ]]; then
         echo "start: service $arg1_redis";
         cd "$cdir_service/$arg1_redis";
@@ -101,6 +103,8 @@ _podman_container-stop() {
         podman-compose -f ./podman.yaml stop;
         cd "$cdir_service/$arg1_postgresql";
         podman-compose -f ./podman.yaml stop;
+        cd "$cdir_service/$arg1_searxng";
+        podman-compose -f ./podman.yaml stop;
     elif [[ $arg1 == $arg1_redis ]]; then
         echo "stop: service $arg1_redis";
         cd "$cdir_service/$arg1_redis";
@@ -170,6 +174,8 @@ _podman_container-restart() {
         cd "$cdir_service/$arg1_scylladb";
         podman-compose -f ./podman.yaml restart;
         cd "$cdir_service/$arg1_postgresql";
+        podman-compose -f ./podman.yaml restart;
+        cd "$cdir_service/$arg1_searxng";
         podman-compose -f ./podman.yaml restart;
     elif [[ $arg1 == $arg1_redis ]]; then
         echo "restart: service $arg1_redis";
