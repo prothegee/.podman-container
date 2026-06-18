@@ -12,7 +12,7 @@ services:
       - ./settings.yml:/etc/searxng/settings.yml
     networks:
       - core_podman_network
-    restart: always # unless-stopped
+    restart: unless-stopped # always | unless-stopped | never
 
 networks:
   core_podman_network:
